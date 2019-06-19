@@ -1,0 +1,10 @@
+[global]
+filename=/dev/nullb0
+runtime=30
+ioengine=libaio
+direct=1
+ramp_time=10            # start measuring after warm-up time
+
+[read]
+readwrite=randread
+blocksize=4k
