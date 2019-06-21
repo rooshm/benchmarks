@@ -13,9 +13,10 @@ for i in threads native io_uring
 do
     x86_64-softmmu/qemu-system-x86_64 -M accel=kvm -m 1G -cdrom my-seed.iso \
     -drive file=my-disk.qcow2,format=qcow2,cache=none,if=virtio,aio=native \
-    -drive file=/dev/nullb0,format=raw,cache=none,if=virtio,aio=io_uring \
+    -drive file=/dev/nullb0,format=raw,cache=none,if=virtio,aio=$i \
     -nographic -nic none 
 done
+exit
 systemctl restart sshd
 x86_64-softmmu/qemu-system-x86_64 -M accel=kvm -m 1G -cdrom my-seed.iso \
 -drive file=my-disk.qcow2,format=qcow2,cache=none,if=virtio,aio=native \
